@@ -1,6 +1,12 @@
 # Cable v4.1
 
-Cable v4.1 is a graphical cabling application designed for interactive circuit layout and logical cable management. Users can create, modify, and analyze cable configurations to determine reliability and integrity within the system. The program features a user-friendly graphical interface developed with **Tkinter**, accompanied by essential features like cable linking, visualization of logical states, and simplification tools such as Boolean expressions and functions.
+Conçue par Raphaël
+Cable v4.1 est une application graphique de câblage interactive avec la gestion logique des câbles. Les utilisateurs peuvent créer, modifier et analyser des configurations de câbles afin de déterminer la fiabilité et l'intégrité du système. Elle est accompagnée de fonctionnalités de visualisation des états logiques des sorties en expressions booléennes ou fonctions.
+
+# Cable v4_1
+
+une tentative d'optimisation du programme precedent par moimême avec l'utilisation de liste pour l'optimisation (lines.append) work in-progress
+
 
 ---
 
