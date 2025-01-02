@@ -7,6 +7,12 @@ Cable v4.1 est une application graphique de câblage interactive avec la gestion
 
 une tentative d'optimisation du programme precedent par moimême avec l'utilisation de liste pour l'optimisation (lines.append) work in-progress
 
+# dynamic trust table
+
+programme ayant pour but de donner une table des input et output necessaire afin d'obtenir un cablage correct et fiable 
+
+(sera prochainnement utilisé en tant que module pour un programme de test automatique)
+
 
 ---
 
