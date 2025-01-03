@@ -1,7 +1,8 @@
 from tkinter import *
 from itertools import combinations
+from dynamictrusttable import appliquer_logique
 
-
+## code non fontionnel et bouré d'erreur de logique sur le système de verification à but visuel seulement 
 class CableReliabilityApp:
     def __init__(self):
         self.nbcable = None  # Nombre de câbles utilisé par l'utilisateur (initialisé plus tard)
