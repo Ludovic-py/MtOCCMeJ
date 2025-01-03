@@ -1,5 +1,35 @@
 from itertools import product
 
+# système de verification
+
+def is_ordered_descending(output):
+    """
+    Vérifie si les valeurs de la sortie sont en ordre décroissant
+    les 1 avant les 0, comme [1, 1, 1, 0] (pour une ligne)
+
+     output: Liste des valeurs de sortie (exemple : [1, 1, 1, 0]).
+    return True si la sortie est en ordre décroissant, False sinon.
+    """
+    return output == sorted(output, reverse=True)
+
+
+def verify_reliability(truth_table):
+    """
+    Vérifie si le câblage est fiable en s'assurant que toutes les sorties sont ordonnées.
+    Une sortie est valide uniquement si elle est en ordre décroissant
+
+    truth_table: Table de vérité contenant les entrées et sorties pour chaque combinaison.
+    return: True si le câblage est fiable, False sinon.
+    """
+    for inputs, outputs in truth_table:
+        if not is_ordered_descending(outputs):  # Vérifier si une sortie est invalide
+            print(f"Câblage invalide : Inputs: {inputs} -> Outputs: {outputs}")
+            return False
+    return True
+
+
+
+#reste du programme
 
 def boolean_calculations(num_cables, connections):
     """
@@ -46,7 +76,7 @@ def boolean_calculations(num_cables, connections):
 
     return truth_table
 
-
+# SECTION DE SELECTION DES PARAMETRE DU PROGRAMME
 # Exemple utilisation : 4 Cables, 12 Connection
 
 
@@ -81,3 +111,13 @@ print("Truth Table (Inputs -> Outputs):")
 
 for inputs, outputs in truth_table:
     print(f"Inputs: {inputs} -> Outputs: {outputs}")
+
+
+# Vérification de la fiabilité
+
+if verify_reliability(truth_table):
+    print("Câblage fiable")
+else:
+    print("Câblage non fiable")
+
+
