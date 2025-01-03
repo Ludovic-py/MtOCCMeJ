@@ -11,6 +11,7 @@ une tentative d'optimisation du programme precedent par moimême avec l'utilisat
 
 programme ayant pour but de donner une table des input et output necessaire afin d'obtenir un cablage correct et fiable 
 
+3T est maintenant essentiellement similaire a un (Cable v2)^2 en l'utilisant comme module on peut lui envoyer les nombre de cable et connections et il revera les output calculés et si le cablage est fiable (si non fiable renvera la premièrre combinaison qui n'as pas fontionnée)
 (sera prochainnement utilisé en tant que module pour un programme de test automatique (massTest 1/2 ou MT1/2))
 
 
