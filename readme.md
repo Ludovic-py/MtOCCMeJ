@@ -5,7 +5,7 @@ Cable v4.1 est une application graphique de câblage interactive avec la gestion
 
 # Cable v4_1
 
-une tentative d'optimisation du programme precedent par moimême avec l'utilisation de liste pour l'optimisation (lines.append) plein ecran et compatibilité plus avancé sur MacOs (work in-progress)
+une tentative d'optimisation du programme precedent par moimême avec l'utilisation de liste pour l'optimisation (lines.append) plein ecran et compatibilité plus avancé sur MacOs (work in-progress) tout n'est pas encore implementé à(but de merge après verification et finition sur la version de raphaël)
 
 # dynamic trust table et/ou 3T/TestTrustTable
 
@@ -64,19 +64,18 @@ programme ayant pour but de donner une table des input et output necessaire afin
    - Un état de fiabilité sera affiché en bas de l'interface principale et sera mis à jour dynamiquement en fonction des modifications effectuées.
 ---
 
-## Conception de l'application
 
 Ci-dessous se trouvent les principaux composants du programme :
 
 ### **1. Interface graphique (Tkinter)**
 - Gère la disposition graphique des câbles et des éléments associés dans l’application (GUI).
 
+
+
+## annexe
 - **L'ordre des connexions est important** lors des tests, mais les connexions elles-mêmes sont non dirigées.
     - Par exemple, la séquence `(1,2)` puis `(3,2)` est différente de `(3,2)` puis `(1,2)`, même si les connexions individuelles `(1,2)` ou `(3,2)` sont traitées de la même manière peu importe leur direction (puisqu'elles sont non dirigées).
-
-
-## Design de l'application (Suite)
-
+    - 
 1. Chaque câble possède une **sortie** qui dépend de la logique booléenne appliquée aux entrées qu'il reçoit.
     - Par exemple :
         - La **sortie du câble supérieur** peut être calculée en utilisant un `OR` (équivalent à `max` en logique booléenne).
