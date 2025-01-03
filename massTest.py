@@ -11,12 +11,10 @@ class CableReliabilityApp:
         self.setup_input()  # Configuration initiale (fenêtre d'entrée utilisateur)
 
     def setup_input(self):
-        """Fenêtre de base pour récupérer le nombre de câbles de l'utilisateur."""
         self.root = Tk()
         self.root.title("Configuration des câbles")
         self.root.resizable(False, False)
 
-        # Label principal
         Label(self.root, text="Entrez le nombre de câbles :", font=("Arial", 14)).grid(
             row=0, column=0, columnspan=2, pady=10
         )
@@ -34,7 +32,7 @@ class CableReliabilityApp:
         self.root.mainloop()
 
     def get_cable_input(self):
-        """Récupération de l'entrée utilisateur et transition vers l'interface principale."""
+        """Récupération de l'entrée utilisateur/ transition vers la main ui."""
         try:
             self.nbcable = int(self.cable_input.get())
             if self.nbcable < 2:
@@ -45,12 +43,12 @@ class CableReliabilityApp:
             )
             return
 
-        # Fermeture de la fenêtre actuelle et lancement de l'interface principale
+        # Fermeture de la fenêtre actuelle et lancement de la main ui
         self.root.destroy()
         self.setup_main_interface()
 
     def setup_main_interface(self):
-        """Fenêtre principale avec affichage des câbles et calculs."""
+        """Fenêtre principale avec affichage des câbles(sert quasi à rien sauf à lancer le calcul)"""
         self.root = Tk()
         self.root.title(f"Fiabilité du câblage - {self.nbcable} câbles")
         self.root.geometry("1000x700")
@@ -83,11 +81,10 @@ class CableReliabilityApp:
         self.result_text = Label(self.root, text="", font=("Arial", 14), fg="blue")
         self.result_text.pack(pady=10)
 
-        self.root.protocol("WM_DELETE_WINDOW", self.close_app)  # Gestion de la fermeture
+        self.root.protocol("WM_DELETE_WINDOW", self.close_app)  
         self.root.mainloop()
 
     def draw_cables(self):
-        """Dessiner les câbles sur le canvas."""
         self.canvas.delete("all")
         spacing = 600 // self.nbcable  # Espacement entre les câbles
         for i in range(self.nbcable):
@@ -96,15 +93,12 @@ class CableReliabilityApp:
             self.canvas.create_text(30, y, text=f"Câble {i + 1}", font=("Arial", 12))
 
     def generate_possible_connections(self):
-        """Génère toutes les connexions possibles entre les câbles."""
         return list(combinations(range(1, self.nbcable + 1), 2))
 
     def test_all_combinations(self):
-        """Tester toutes les combinaisons possibles de connexions."""
         self.connections = self.generate_possible_connections()
         results = []
 
-        # Tester les sous-ensembles
         for size in range(1, len(self.connections) + 1):  # Tailles des combinaisons
             subsets = combinations(self.connections, size)
             for subset in subsets:
@@ -115,7 +109,7 @@ class CableReliabilityApp:
         self.show_results(results)
 
     def is_reliable_combination(self, subset):
-        """Teste si une combinaison est fiable."""
+        """Teste si une combinaison est fiable. marche pas je sui con verrai plus tard"""
         # La combinaison est fiable si tous les câbles sont connectés
         connected_cables = set()
         for a, b in subset:
@@ -124,13 +118,12 @@ class CableReliabilityApp:
         return len(connected_cables) == self.nbcable
 
     def show_results(self, results):
-        """Afficher les résultats dans une interface déroulante."""
+        """print les résultats en ui déroulante."""
         results_window = Toplevel(self.root)
         results_window.title("Résultats")
         scrollbar = Scrollbar(results_window)
         scrollbar.pack(side=RIGHT, fill=Y)
 
-        # Liste déroulante des résultats
         results_listbox = Listbox(results_window, yscrollcommand=scrollbar.set, font=("Arial", 12))
         results_listbox.pack(fill=BOTH, expand=True)
 
