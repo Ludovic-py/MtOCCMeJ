@@ -4,10 +4,8 @@ from itertools import combinations, product
 def trouver_sous_ensemble_fiable(c, logic_funcs=("OR", "AND")):
     """
     Trouve le plus petit sous-ensemble de connexions pour 'c' câbles qui respecte le tableau de vérité dynamique.
-
-    :param c: Nombre de câbles dans le système.
-    :param logic_funcs: Tuple des fonctions logiques appliquées aux connexions, par défaut ("OR", "AND").
-    :return: Le plus petit sous-ensemble fiable et le tableau de vérité dynamique attendu.
+     ça marche pas car flemme de refaire le système de test, je vais m'en servir que pour faire des tables je pense
+    param c Nombre de câbles dans le système.
     """
 
     def appliquer_logique(entree1, entree2, fonction_logique):
@@ -29,10 +27,10 @@ def trouver_sous_ensemble_fiable(c, logic_funcs=("OR", "AND")):
     # Générer toutes les connexions possibles (toutes les combinaisons non-ordonnées entre câbles)
     toutes_les_connexions = list(combinations(range(1, c + 1), 2))  # Les câbles sont numérotés de 1 à c
 
-    # Générer toutes les combinaisons d'entrées possibles (2^c)
+    # Genere toutes les combinaisons d'entrées possibles (2^c)
     entrees = list(product([0, 1], repeat=c))  # Combinaisons binaires pour c câbles
 
-    # Générer le tableau de vérité dynamique attendu
+    # Genere le tableau de vérité dynamique 
     tableau_dynamique = []
     for entree in entrees:
         nombre_actives = sum(entree)  # Compter le nombre de câbles activés (valant 1)
@@ -62,16 +60,13 @@ def trouver_sous_ensemble_fiable(c, logic_funcs=("OR", "AND")):
                     sortie1 = appliquer_logique(entree1, entree2, logic_funcs[0])
                     sortie2 = appliquer_logique(entree1, entree2, logic_funcs[1])
 
-                    # Mettre à jour les sorties des câbles
                     sorties[cable1 - 1] = sortie1
                     sorties[cable2 - 1] = sortie2
 
-                # Comparer les résultats aux sorties attendues
                 if sorties != sortie_attendue:
                     tous_resultats_fiables = False
                     break
 
-            # Si ce sous-ensemble est fiable, le retourner
             if tous_resultats_fiables:
                 return sous_ensemble, tableau_dynamique
 
