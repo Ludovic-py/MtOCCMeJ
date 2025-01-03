@@ -19,7 +19,7 @@ class CableReliabilityApp:
         self.root.resizable(False, False)
 
         # le label
-        Label(self.root, text="Enter the number of cables:", font=("Arial", 14)).grid(
+        Label(self.root, text="Number of cables:", font=("Arial", 14)).grid(
             row=0, column=0, columnspan=2, pady=10
         )
 
@@ -105,8 +105,7 @@ class CableReliabilityApp:
         self.connections = self.generate_possible_connections()
         results = []
 
-        # Test logic for each subset of connections
-        for size in range(1, len(self.connections) + 1):  # Combination sizes
+        for size in range(1, len(self.connections) + 1): 
             subsets = combinations(self.connections, size)
             for subset in subsets:
                 is_reliable = self.is_reliable_combination(subset)
@@ -117,16 +116,9 @@ class CableReliabilityApp:
         self.show_results(results)
 
     def is_reliable_combination(self, subset):
-        """determine si un sous ensemble est fiable"""
-        # je suppose que le système est fiable si tous les câbles sont connectés
-        connected_cables = set()
-        for a, b in subset:
-            connected_cables.add(a)
-            connected_cables.add(b)
-        return len(connected_cables) == self.nbcable
+        # à refaire car inutille sinon
 
     def show_results(self, results):
-        """afiche les resultats"""
         # j'efface les resultats precedends avant d'aficher les nouveaux (pas utile là (vu quon peut pas faire plusieurs test l'un apres l'autre)mais va servir plus tard avec des boutons supl)
         if self.result_text:
             self.result_text.destroy()
