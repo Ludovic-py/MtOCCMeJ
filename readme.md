@@ -1,7 +1,7 @@
 # Cable v4.1
 
 Conçue par Raphaël
-Cable v4.1 est une application graphique de câblage interactive avec la gestion logique des câbles. Les utilisateurs peuvent créer, modifier et analyser des configurations de câbles afin de déterminer la fiabilité et l'intégrité du système. Elle est accompagnée de fonctionnalités de visualisation des états logiques des sorties en expressions booléennes ou fonctions.
+Cable v4.1 est une application graphique de câblage avec la gestion logique des câbles. Les utilisateurs peuvent créer, modifier des configurations de câbles afin de déterminer la fiabilité du système. Elle est accompagnée de fonctionnalités de visualisation des états logiques des sorties en expressions booléennes (et fonctions).
 
 # Cable v4_1
 
