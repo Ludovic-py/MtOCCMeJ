@@ -4,6 +4,8 @@ from itertools import product
 def boolean_calculations(num_cables, connections):
     """
     meme que l'autre marche pas totalement et moitié foireux pas touche je changerai plus tard
+
+    nesamoins celui qui à le plus de potentiel des deux
     """
 
     def apply_logic(input1, input2, logic_func):
