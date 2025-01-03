@@ -74,7 +74,6 @@ Ci-dessous se trouvent les principaux composants du programme :
 - **L'ordre des connexions est important** lors des tests, mais les connexions elles-mêmes sont non dirigées.
     - Par exemple, la séquence `(1,2)` puis `(3,2)` est différente de `(3,2)` puis `(1,2)`, même si les connexions individuelles `(1,2)` ou `(3,2)` sont traitées de la même manière peu importe leur direction (puisqu'elles sont non dirigées).
 
-En d'autres termes, nous **testons des séquences spécifiques sur la manière dont les connexions sont appliquées**, tout en traitant les connexions individuelles comme `(1,2)` et `(2,1)` de manière identique.
 
 ## Design de l'application (Suite)
 
@@ -83,9 +82,6 @@ En d'autres termes, nous **testons des séquences spécifiques sur la manière d
         - La **sortie du câble supérieur** peut être calculée en utilisant un `OR` (équivalent à `max` en logique booléenne).
         - La **sortie du câble inférieur** peut être calculée en utilisant un `AND` (équivalent à `min` en logique booléenne).
 
-2. **Fiabilité via les sorties :**
-    - Le système peut être testé pour sa fiabilité en vérifiant si les sorties booléennes de chaque câble correspondent aux sorties attendues dans des conditions d'entrée spécifiques.
-    - Si toutes les sorties suivent la logique booléenne attendue, le système est considéré comme fiable.
 
 ### Exemple :
 
@@ -101,7 +97,9 @@ Considérons **2 câbles** (`C1` et `C2`) et **1 connexion** entre eux :
 2. Sorties pour le **câble inférieur (C2)** :
    **C2_output = input1 AND input2**  
    (Cela utilise la logique booléenne `AND`).
+   
 #### Truth Table:
+
 Pour valider la fiabilité, vous pouvez créer une table de vérité avec toutes les entrées possibles du système et vérifier si les sorties correspondent au comportement attendu.
 
 | `input1` | `input2` | `C1_output` (OR) | `C2_output` (AND) |
@@ -113,7 +111,7 @@ Pour valider la fiabilité, vous pouvez créer une table de vérité avec toutes
 - Si le système produit ces sorties de manière fiable pour chaque condition d'entrée, il est considéré comme **fonctionnel et fiable**.
 
 
-### Exemple de Tableau de vérité dynamique (Entrées -> Sorties attendues) pour un câblage avec 6 câbles (C=6) (/!\ non vérifiée, peut contenir des erreur) :
+### Exemple de Tableau de vérité dynamique (Entrées -> Sorties attendues) pour un câblage avec 6 câbles (C=6) (/!\ non vérifiée, peut contenir des erreur(généré avec dynamictrusttable V0.2 donc pas totalement au point)) :
 
 | Entrées                  | Sorties attendues        |
 |--------------------------|--------------------------|
@@ -199,19 +197,18 @@ Pour tester un système ayant `c` câbles avec un nombre variable de connexions 
 4. **Valider les résultats via tableau de vérité** :
     - Générer un tableau de vérité dynamique pour les `c` câbles avec toutes les combinaisons d'entrées possibles.
     - Comparer les sorties du système à ce tableau de vérité pour en valider la fiabilité.
-
+    - Cela me semble être une solution simple cependant je n'ai pas encore regardé la fonction de verification du programme de raphaël, la methode de verification de mon programme de test sera probablement amenée à changer.
 ---
 
 ### Optimisation du processus de test :
 
 1. **Éliminer les tests au-delà de la limite maximale** :
-    - Pour un système avec `c` câbles, calculer la limite maximale des connexions utiles en utilisant la formule `((c-1)c)/2`.
+    - Pour un système avec `c` câbles, calculer la limite maximale des connexions utiles en utilisant la formule `((c-1)c)/2`  sachant qu'à partir de ce nombre de connection, on peut donc trouver une methode perméttant d'avoir un cablage fiable, donc non nessecaire de tester vers l'infini et l'au-dela, surtout que j'ai pas 12To de RAM .
     - Tester uniquement les ensembles de connexions **ne dépassant pas cette limite**.
 
 2. **Se concentrer sur le plus petit sous-ensemble fiable** :
     - Commencer les tests avec les ensembles ayant le plus petit nombre de connexions (par ex. `n = 1`).
     - Ajouter progressivement des connexions et tester jusqu'à identifier un sous-ensemble fiable.
-    - Interrompre les tests lorsqu'il n'est plus nécessaire d'ajouter des connexions supplémentaires.
 
 3. **Tester toutes les combinaisons d'entrée** :
     - Utiliser le tableau de vérité généré pour tester chaque sous-ensemble de connexions sur toutes les combinaisons possibles des entrées pour les `c` câbles.
