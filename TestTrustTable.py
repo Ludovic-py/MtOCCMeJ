@@ -54,14 +54,16 @@ def boolean_calculations(num_cables, connections):
     truth_table = []
 
     for input_combination in inputs:
-        cable_outputs = [None] * num_cables
-
+        cable_outputs = list(input_combination)
+        # cable_outputs = [None] * num_cables  (old) part of revision (ne prenait pas en compte l'ordre des connection)
+        
         for conn in connections:
             input1, input2, upper_func, lower_func = conn
 
-            
-            input1_val = input_combination[input1 - 1]  #  index du cable is basé 1
-            input2_val = input_combination[input2 - 1]
+            input1_val = cable_outputs[input1 - 1]  
+            input2_val = cable_outputs[input2 - 1]
+            # input1_val = input_combination[input1 - 1]  #  index du cable is basé 1 (old) part of revision (ne prenait pas en compte l'ordre des connection)
+            # input2_val = input_combination[input2 - 1] (old) part of revision (ne prenait pas en compte l'ordre des connection)
 
             # calcule output
             upper_output = apply_logic(input1_val, input2_val, upper_func)
