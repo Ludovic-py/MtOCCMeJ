@@ -5,7 +5,7 @@ Cable v4.1 est une application graphique de câblage interactive avec la gestion
 
 # Cable v4_1
 
-une tentative d'optimisation du programme precedent par moimême avec l'utilisation de liste pour l'optimisation (lines.append) work in-progress
+une tentative d'optimisation du programme precedent par moimême avec l'utilisation de liste pour l'optimisation (lines.append) plein ecran et compatibilité plus avancé sur MacOs (work in-progress)
 
 # dynamic trust table
 
@@ -30,7 +30,7 @@ programme ayant pour but de donner une table des input et output necessaire afin
     - Supprimer des liens existants en cliquant directement sur le lien.
 
 - **Sortie graphique** :
-  - Effectuez un clic droit sur un câble pour ouvrir une fenêtre distincte affichant son état logique sous forme de :
+  - Effectuez un **clic droit** sur un câble pour ouvrir une fenêtre distincte affichant son état logique sous forme de :
     - **Expressions booléennes**
     - **Mode fonction** (pas encore utilisable).
 
@@ -40,9 +40,6 @@ programme ayant pour but de donner une table des input et output necessaire afin
     - `"Le câblage est fiable."` (Le câblage est fiable).
     - `"Le câblage n'est pas fiable."` (Le câblage n'est pas fiable).
 
-- **Interface graphique dynamique** :
-  - Redimensionnement dynamique des éléments pour adapter l'interface graphique à la taille de l'écran.
-  - Modes d'affichage ajustables pour les expressions logiques et les câbles.
 ---
 
 ## How to Use
