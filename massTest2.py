@@ -1,7 +1,8 @@
 from tkinter import *
-
 from itertools import combinations
+from dynamictrusttable import appliquer_logique
 
+## code non fontionnel et bouré d'erreur de logique(au moins autant que dans massTest)sur le système de verification à but visuel seulement 
 
 
 class CableReliabilityApp:
