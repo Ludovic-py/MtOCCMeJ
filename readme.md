@@ -16,101 +16,96 @@ programme ayant pour but de donner une table des input et output necessaire afin
 
 ---
 
-## Features
+## Features (Cable 4.1)
 
-### Main Features:
-- **Dynamic Cable Creation**:
-  - Users input the number of cables during initialization.
-  - The program automatically adjusts the spacing and appearance of cables in the graphical interface.
+### Fonctionnalités principales :
+- **Création dynamique de câbles** :
+  - Les utilisateurs saisissent le nombre de câbles lors de l'initialisation.
+  - Le programme ajuste automatiquement l'espacement et l'apparence des câbles dans l'interface graphique.
 
-- **Cable Linking**:
-  - Connect cables through vertical links to represent logical relationships.
-  - **Left-click** to:
-    - Create links between two cables (one above the other).
-    - Remove existing links by clicking directly on the link.
+- **Connexion des câbles** :
+  - Reliez les câbles par des liens verticaux pour représenter des relations logiques.
+  - **Clic gauche** pour :
+    - Créer des liens entre deux câbles (l'un au-dessus de l'autre).
+    - Supprimer des liens existants en cliquant directement sur le lien.
 
-- **Graphical Output**:
-  - Right-click on a cable to open a separate window displaying its logical state in either:
-    - **Boolean expressions**
-    - **Function mode**
+- **Sortie graphique** :
+  - Effectuez un clic droit sur un câble pour ouvrir une fenêtre distincte affichant son état logique sous forme de :
+    - **Expressions booléennes**
+    - **Mode fonction** (pas encore utilisable).
 
-- **Boolean Algebra Simplification**:
-  - Several simplification options are available:
-    - **Development**: Expanding logical expressions.
-    - **Factorization**: Compacting logical expressions.
-    - **Raw Output**: Displaying unsimplified expressions.
+- **Analyse de fiabilité** :
+  - Vérifie automatiquement la fiabilité du câblage pour confirmer la cohérence logique.
+  - Affiche l'état de fiabilité :
+    - `"Le câblage est fiable."` (Le câblage est fiable).
+    - `"Le câblage n'est pas fiable."` (Le câblage n'est pas fiable).
 
-- **Reliability Analysis**:
-  - Automatically checks cabling reliability to confirm logical soundness.
-  - Displays the reliability status:
-    - `"Le cablage est fiable."` (Cabling is reliable).
-    - `"Le cablage n'est pas fiable."` (Cabling is not reliable).
-
-- **User-Friendly Interface**:
-  - Dynamic resizing of elements adapts the graphical interface to the screen size.
-  - Adjustable display modes for logical expressions and cables.
-
+- **Interface graphique dynamique** :
+  - Redimensionnement dynamique des éléments pour adapter l'interface graphique à la taille de l'écran.
+  - Modes d'affichage ajustables pour les expressions logiques et les câbles.
 ---
 
 ## How to Use
 
-### Running the Program:
-1. Launch `Cable v4.1` from the terminal or Python IDE.
-2. A dialog box will appear allowing you to input the desired number of cables.
-3. Once entered, the main graphical interface will display the cables.
+### Exécution du programme :
+1. Lancez `Cable v4.1` depuis le terminal ou un IDE Python.
+2. Une boîte de dialogue apparaîtra, vous permettant de saisir le nombre de câbles souhaité.
+3. Une fois saisi, l'interface graphique principale affichera les câbles.
 
-### Operations:
-1. **Creating Links**:
-   - Click on a cable and then on another cable directly above or below to form a logical link.
-2. **Deleting Links**:
-   - Click on an existing vertical link to remove it.
-3. **Viewing Cable Outputs**:
-   - Right-click on a cable to open a new window displaying its logical state as either Boolean or Function output.
-   - Customize the display mode or simplify the outputs using the available options in the pop-up window.
-4. **Reliability Analysis**:
-   - A reliability status will be displayed at the bottom of the main interface, dynamically updated as changes are made.
+### Opérations :
 
+1. **Créer des liens** :
+   - Cliquez sur un câble, puis sur un autre câble directement au-dessus ou en dessous pour former un lien logique.
+
+2. **Supprimer des liens** :
+   - Cliquez sur un lien vertical existant pour le supprimer.
+
+3. **Afficher les sorties des câbles** :
+   - Faites un clic droit sur un câble pour ouvrir une nouvelle fenêtre affichant son état logique, soit sous forme de sortie booléenne, soit sous forme de fonction.
+
+4. **Analyse de fiabilité** :
+   - Un état de fiabilité sera affiché en bas de l'interface principale et sera mis à jour dynamiquement en fonction des modifications effectuées.
 ---
 
-## Application Design
+## Conception de l'application
 
-Cable v4.1 is built with modularity and flexibility in mind. Below are the primary components of the program:
+Ci-dessous se trouvent les principaux composants du programme :
 
-### **1. Graphical Interface (Tkinter)**
-- Handles the graphical layout of cables and associated elements in the
+### **1. Interface graphique (Tkinter)**
+- Gère la disposition graphique des câbles et des éléments associés dans l’application (GUI).
 
+- **L'ordre des connexions est important** lors des tests, mais les connexions elles-mêmes sont non dirigées.
+    - Par exemple, la séquence `(1,2)` puis `(3,2)` est différente de `(3,2)` puis `(1,2)`, même si les connexions individuelles `(1,2)` ou `(3,2)` sont traitées de la même manière peu importe leur direction (puisqu'elles sont non dirigées).
 
-- **The way the connections are ordered matters** within the test, but the connections themselves are undirected.
-    - For example, the sequence of `(1,2)` then `(3,2)` is different from `(3,2)` then `(1,2)`, even though the individual connections `(1,2)` or `(3,2)` are treated as the same regardless of direction (since they are undirected).
+En d'autres termes, nous **testons des séquences spécifiques sur la manière dont les connexions sont appliquées**, tout en traitant les connexions individuelles comme `(1,2)` et `(2,1)` de manière identique.
 
-In other words, we are **testing specific sequences of how the connections are applied**, while still treating individual connections like `(1,2)` and `(2,1)` as identical.
+## Design de l'application (Suite)
 
+1. Chaque câble possède une **sortie** qui dépend de la logique booléenne appliquée aux entrées qu'il reçoit.
+    - Par exemple :
+        - La **sortie du câble supérieur** peut être calculée en utilisant un `OR` (équivalent à `max` en logique booléenne).
+        - La **sortie du câble inférieur** peut être calculée en utilisant un `AND` (équivalent à `min` en logique booléenne).
 
+2. **Fiabilité via les sorties :**
+    - Le système peut être testé pour sa fiabilité en vérifiant si les sorties booléennes de chaque câble correspondent aux sorties attendues dans des conditions d'entrée spécifiques.
+    - Si toutes les sorties suivent la logique booléenne attendue, le système est considéré comme fiable.
 
-1. 
-    - Each cable has an **output** that depends on boolean logic applied to the inputs it receives.
-    - For example:
-        - The **upper cable's output** might be calculated using `OR` (`max` in boolean terms).
-        - The **lower cable's output** might be calculated using `AND` (`min` in boolean terms).
-1. **Reliability via Outputs:**
-    - The system can be tested for reliability by checking if the boolean outputs on each cable match the expected outputs under specific input conditions.
-    - If all outputs follow the expected boolean logic, the system is considered reliable.
+### Exemple :
 
+Considérons **2 câbles** (`C1` et `C2`) et **1 connexion** entre eux :
+- Les **entrées booléennes** des câbles sont : `input1` et `input2`.
 
-### Example Case:
-Consider **2 cables** (`C1` and `C2`) and **1 connection** between them:
-- The **boolean inputs** to the cables are: `input1` and `input2`.
+#### Logique :
 
-#### Logic:
-1. Outputs for the **upper cable (C1)**:
-**C1_output = input1 OR input2**
-(This uses the boolean `OR` logic).
-2. Outputs for the **lower cable (C2)**:
-**C2_output = input1 AND input2**
-(This uses the boolean `AND` logic).
+1. Sorties pour le **câble supérieur (C1)** :
+   **C1_output = input1 OR input2**  
+   (Cela utilise la logique booléenne `OR`).
 
+2. Sorties pour le **câble inférieur (C2)** :
+   **C2_output = input1 AND input2**  
+   (Cela utilise la logique booléenne `AND`).
 #### Truth Table:
-To validate the reliability, you can create a truth table for all possible inputs to the system and verify if the outputs match the expected behavior.
+Pour valider la fiabilité, vous pouvez créer une table de vérité avec toutes les entrées possibles du système et vérifier si les sorties correspondent au comportement attendu.
 
 | `input1` | `input2` | `C1_output` (OR) | `C2_output` (AND) |
 | --- | --- | --- | --- |
@@ -118,122 +113,115 @@ To validate the reliability, you can create a truth table for all possible input
 | 0 | 1 | 1 | 0 |
 | 1 | 0 | 1 | 0 |
 | 1 | 1 | 1 | 1 |
-- If the system reliably produces these outputs under every input condition, it is considered **functional and reliable**.
+- Si le système produit ces sorties de manière fiable pour chaque condition d'entrée, il est considéré comme **fonctionnel et fiable**.
+
+
+### Exemple de Tableau de vérité dynamique (Entrées -> Sorties attendues) pour un câblage avec 6 câbles (C=6) (/!\ non vérifiée, peut contenir des erreur) :
+
+| Entrées                  | Sorties attendues        |
+|--------------------------|--------------------------|
+| (0, 0, 0, 0, 0, 0)       | [0, 0, 0, 0, 0, 0]       |
+| (0, 0, 0, 0, 0, 1)       | [1, 0, 0, 0, 0, 0]       |
+| (0, 0, 0, 0, 1, 0)       | [1, 0, 0, 0, 0, 0]       |
+| (0, 0, 0, 0, 1, 1)       | [1, 1, 0, 0, 0, 0]       |
+| (0, 0, 0, 1, 0, 0)       | [1, 0, 0, 0, 0, 0]       |
+| (0, 0, 0, 1, 0, 1)       | [1, 1, 0, 0, 0, 0]       |
+| (0, 0, 0, 1, 1, 0)       | [1, 1, 0, 0, 0, 0]       |
+| (0, 0, 0, 1, 1, 1)       | [1, 1, 1, 0, 0, 0]       |
+| (0, 0, 1, 0, 0, 0)       | [1, 0, 0, 0, 0, 0]       |
+| (0, 0, 1, 0, 0, 1)       | [1, 1, 0, 0, 0, 0]       |
+| (0, 0, 1, 0, 1, 0)       | [1, 1, 0, 0, 0, 0]       |
+| (0, 0, 1, 0, 1, 1)       | [1, 1, 1, 0, 0, 0]       |
+| (0, 0, 1, 1, 0, 0)       | [1, 1, 0, 0, 0, 0]       |
+| (0, 0, 1, 1, 0, 1)       | [1, 1, 1, 0, 0, 0]       |
+| (0, 0, 1, 1, 1, 0)       | [1, 1, 1, 0, 0, 0]       |
+| (0, 0, 1, 1, 1, 1)       | [1, 1, 1, 1, 0, 0]       |
+| (0, 1, 0, 0, 0, 0)       | [1, 0, 0, 0, 0, 0]       |
+| (0, 1, 0, 0, 0, 1)       | [1, 1, 0, 0, 0, 0]       |
+| (0, 1, 0, 0, 1, 0)       | [1, 1, 0, 0, 0, 0]       |
+| (0, 1, 0, 0, 1, 1)       | [1, 1, 1, 0, 0, 0]       |
+| (0, 1, 0, 1, 0, 0)       | [1, 1, 0, 0, 0, 0]       |
+| (0, 1, 0, 1, 0, 1)       | [1, 1, 1, 0, 0, 0]       |
+| (0, 1, 0, 1, 1, 0)       | [1, 1, 1, 0, 0, 0]       |
+| (0, 1, 0, 1, 1, 1)       | [1, 1, 1, 1, 0, 0]       |
+| (0, 1, 1, 0, 0, 0)       | [1, 1, 0, 0, 0, 0]       |
+| (0, 1, 1, 0, 0, 1)       | [1, 1, 1, 0, 0, 0]       |
+| (0, 1, 1, 0, 1, 0)       | [1, 1, 1, 0, 0, 0]       |
+| (0, 1, 1, 0, 1, 1)       | [1, 1, 1, 1, 0, 0]       |
+| (0, 1, 1, 1, 0, 0)       | [1, 1, 1, 0, 0, 0]       |
+| (0, 1, 1, 1, 0, 1)       | [1, 1, 1, 1, 0, 0]       |
+| (0, 1, 1, 1, 1, 0)       | [1, 1, 1, 1, 0, 0]       |
+| (0, 1, 1, 1, 1, 1)       | [1, 1, 1, 1, 1, 0]       |
+| (1, 0, 0, 0, 0, 0)       | [1, 0, 0, 0, 0, 0]       |
+| (1, 0, 0, 0, 0, 1)       | [1, 1, 0, 0, 0, 0]       |
+| (1, 0, 0, 0, 1, 0)       | [1, 1, 0, 0, 0, 0]       |
+| (1, 0, 0, 0, 1, 1)       | [1, 1, 1, 0, 0, 0]       |
+| (1, 0, 0, 1, 0, 0)       | [1, 1, 0, 0, 0, 0]       |
+| (1, 0, 0, 1, 0, 1)       | [1, 1, 1, 0, 0, 0]       |
+| (1, 0, 0, 1, 1, 0)       | [1, 1, 1, 0, 0, 0]       |
+| (1, 0, 0, 1, 1, 1)       | [1, 1, 1, 1, 0, 0]       |
+| (1, 0, 1, 0, 0, 0)       | [1, 1, 0, 0, 0, 0]       |
+| (1, 0, 1, 0, 0, 1)       | [1, 1, 1, 0, 0, 0]       |
+| (1, 0, 1, 0, 1, 0)       | [1, 1, 1, 0, 0, 0]       |
+| (1, 0, 1, 0, 1, 1)       | [1, 1, 1, 1, 0, 0]       |
+| (1, 0, 1, 1, 0, 0)       | [1, 1, 1, 0, 0, 0]       |
+| (1, 0, 1, 1, 0, 1)       | [1, 1, 1, 1, 0, 0]       |
+| (1, 0, 1, 1, 1, 0)       | [1, 1, 1, 1, 0, 0]       |
+| (1, 0, 1, 1, 1, 1)       | [1, 1, 1, 1, 1, 0]       |
+| (1, 1, 0, 0, 0, 0)       | [1, 1, 0, 0, 0, 0]       |
+| (1, 1, 0, 0, 0, 1)       | [1, 1, 1, 0, 0, 0]       |
+| (1, 1, 0, 0, 1, 0)       | [1, 1, 1, 0, 0, 0]       |
+| (1, 1, 0, 0, 1, 1)       | [1, 1, 1, 1, 0, 0]       |
+| (1, 1, 0, 1, 0, 0)       | [1, 1, 1, 0, 0, 0]       |
+| (1, 1, 0, 1, 0, 1)       | [1, 1, 1, 1, 0, 0]       |
+| (1, 1, 0, 1, 1, 0)       | [1, 1, 1, 1, 0, 0]       |
+| (1, 1, 0, 1, 1, 1)       | [1, 1, 1, 1, 1, 0]       |
+| (1, 1, 1, 0, 0, 0)       | [1, 1, 1, 0, 0, 0]       |
+| (1, 1, 1, 0, 0, 1)       | [1, 1, 1, 1, 0, 0]       |
+| (1, 1, 1, 0, 1, 0)       | [1, 1, 1, 1, 0, 0]       |
+| (1, 1, 1, 0, 1, 1)       | [1, 1, 1, 1, 1, 0]       |
+| (1, 1, 1, 1, 0, 0)       | [1, 1, 1, 1, 0, 0]       |
+| (1, 1, 1, 1, 0, 1)       | [1, 1, 1, 1, 1, 0]       |
+| (1, 1, 1, 1, 1, 0)       | [1, 1, 1, 1, 1, 0]       |
+| (1, 1, 1, 1, 1, 1)       | [1, 1, 1, 1, 1, 1]       |
+
+
+### Étendre le processus de test pour un système avec **`c` câbles** et **`n` connexions** :
+
+Pour tester un système ayant `c` câbles avec un nombre variable de connexions (`n`), allant de 1 à `((c-1)c)/2` connexions possibles, nous devons :
+
+1. **Gérer dynamiquement un nombre variable de câbles (`c`) et de connexions (`n`)** :
+    - Permettre le test de configurations avec tout nombre de câbles et de connexions dans les limites définies.
+
+2. **Tester chaque ordre possible des connexions** :
+    - S'assurer que le système respecte le nombre total de câbles tout en testant **toutes les permutations possibles** de l'ordre d'application des connexions.
+
+3. **Calculer les sorties du système via la logique booléenne** :
+    - Appliquer une logique booléenne (`AND`, `OR`, etc.) pour calculer les sorties pour chaque permutation des connexions.
+
+4. **Valider les résultats via tableau de vérité** :
+    - Générer un tableau de vérité dynamique pour les `c` câbles avec toutes les combinaisons d'entrées possibles.
+    - Comparer les sorties du système à ce tableau de vérité pour en valider la fiabilité.
+
+---
+
+### Optimisation du processus de test :
+
+1. **Éliminer les tests au-delà de la limite maximale** :
+    - Pour un système avec `c` câbles, calculer la limite maximale des connexions utiles en utilisant la formule `((c-1)c)/2`.
+    - Tester uniquement les ensembles de connexions **ne dépassant pas cette limite**.
+
+2. **Se concentrer sur le plus petit sous-ensemble fiable** :
+    - Commencer les tests avec les ensembles ayant le plus petit nombre de connexions (par ex. `n = 1`).
+    - Ajouter progressivement des connexions et tester jusqu'à identifier un sous-ensemble fiable.
+    - Interrompre les tests lorsqu'il n'est plus nécessaire d'ajouter des connexions supplémentaires.
+
+3. **Tester toutes les combinaisons d'entrée** :
+    - Utiliser le tableau de vérité généré pour tester chaque sous-ensemble de connexions sur toutes les combinaisons possibles des entrées pour les `c` câbles.
+    - Si un sous-ensemble produit de manière fiable les sorties correspondant au tableau de vérité, alors ce sous-ensemble est fiable.
 
 
 
 
 
--To expand the testing process for a system with **`c` cables**, allowing for **`n` connections** (from 1 to `((c-1)c)/2` possible connections), we need to:
-1. Dynamically handle a varying number of cables (`c`) and their connections (`n`).
-2. Allow for testing **every possible order** of applying the connections while respecting the total number of cables.
-3. Compute the outputs for the system based on boolean logic (`AND`, `OR`, etc.) for every permutation of the connections.
-4. Validate outputs against the generated truth table under all possible input combinations.
 
-
-
-
-1. **Eliminate Testing Beyond the Boundary:**
-    - For `c` cables, calculate the **useful connection boundary** (using the expression `((c-1)c)/2`).
-    - Only test subsets **with fewer connections than this boundary**.
-
-2. **Focus on Finding the Smallest Reliable Subset:**
-    - Start from the smallest possible connection subsets (e.g., `n = 1`) and incrementally test larger subsets until a reliable one is found.
-    - Stop testing subsets entirely **if adding more connections isn’t required**.
-
-3. **Testing Every Input Combination:**
-    - Use the truth table as a reference to test each subset of connections across all possible input values for `c` cables.
-    - If a subset of connections reliably produces outputs that match the expected truth table, mark it as reliable.
-
-4. **Outputting Results:**
-    - Return the **smallest reliable subset of connections**, along with the truth table for verification.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-exemple de tableau input/output pour un cablage avec 6 cables (C=6)
-Tableau de vérité dynamique (Entrées -> Sorties attendues) :
-((0, 0, 0, 0, 0, 0), [0, 0, 0, 0, 0, 0])
-((0, 0, 0, 0, 0, 1), [1, 0, 0, 0, 0, 0])
-((0, 0, 0, 0, 1, 0), [1, 0, 0, 0, 0, 0])
-((0, 0, 0, 0, 1, 1), [1, 1, 0, 0, 0, 0])
-((0, 0, 0, 1, 0, 0), [1, 0, 0, 0, 0, 0])
-((0, 0, 0, 1, 0, 1), [1, 1, 0, 0, 0, 0])
-((0, 0, 0, 1, 1, 0), [1, 1, 0, 0, 0, 0])
-((0, 0, 0, 1, 1, 1), [1, 1, 1, 0, 0, 0])
-((0, 0, 1, 0, 0, 0), [1, 0, 0, 0, 0, 0])
-((0, 0, 1, 0, 0, 1), [1, 1, 0, 0, 0, 0])
-((0, 0, 1, 0, 1, 0), [1, 1, 0, 0, 0, 0])
-((0, 0, 1, 0, 1, 1), [1, 1, 1, 0, 0, 0])
-((0, 0, 1, 1, 0, 0), [1, 1, 0, 0, 0, 0])
-((0, 0, 1, 1, 0, 1), [1, 1, 1, 0, 0, 0])
-((0, 0, 1, 1, 1, 0), [1, 1, 1, 0, 0, 0])
-((0, 0, 1, 1, 1, 1), [1, 1, 1, 1, 0, 0])
-((0, 1, 0, 0, 0, 0), [1, 0, 0, 0, 0, 0])
-((0, 1, 0, 0, 0, 1), [1, 1, 0, 0, 0, 0])
-((0, 1, 0, 0, 1, 0), [1, 1, 0, 0, 0, 0])
-((0, 1, 0, 0, 1, 1), [1, 1, 1, 0, 0, 0])
-((0, 1, 0, 1, 0, 0), [1, 1, 0, 0, 0, 0])
-((0, 1, 0, 1, 0, 1), [1, 1, 1, 0, 0, 0])
-((0, 1, 0, 1, 1, 0), [1, 1, 1, 0, 0, 0])
-((0, 1, 0, 1, 1, 1), [1, 1, 1, 1, 0, 0])
-((0, 1, 1, 0, 0, 0), [1, 1, 0, 0, 0, 0])
-((0, 1, 1, 0, 0, 1), [1, 1, 1, 0, 0, 0])
-((0, 1, 1, 0, 1, 0), [1, 1, 1, 0, 0, 0])
-((0, 1, 1, 0, 1, 1), [1, 1, 1, 1, 0, 0])
-((0, 1, 1, 1, 0, 0), [1, 1, 1, 0, 0, 0])
-((0, 1, 1, 1, 0, 1), [1, 1, 1, 1, 0, 0])
-((0, 1, 1, 1, 1, 0), [1, 1, 1, 1, 0, 0])
-((0, 1, 1, 1, 1, 1), [1, 1, 1, 1, 1, 0])
-((1, 0, 0, 0, 0, 0), [1, 0, 0, 0, 0, 0])
-((1, 0, 0, 0, 0, 1), [1, 1, 0, 0, 0, 0])
-((1, 0, 0, 0, 1, 0), [1, 1, 0, 0, 0, 0])
-((1, 0, 0, 0, 1, 1), [1, 1, 1, 0, 0, 0])
-((1, 0, 0, 1, 0, 0), [1, 1, 0, 0, 0, 0])
-((1, 0, 0, 1, 0, 1), [1, 1, 1, 0, 0, 0])
-((1, 0, 0, 1, 1, 0), [1, 1, 1, 0, 0, 0])
-((1, 0, 0, 1, 1, 1), [1, 1, 1, 1, 0, 0])
-((1, 0, 1, 0, 0, 0), [1, 1, 0, 0, 0, 0])
-((1, 0, 1, 0, 0, 1), [1, 1, 1, 0, 0, 0])
-((1, 0, 1, 0, 1, 0), [1, 1, 1, 0, 0, 0])
-((1, 0, 1, 0, 1, 1), [1, 1, 1, 1, 0, 0])
-((1, 0, 1, 1, 0, 0), [1, 1, 1, 0, 0, 0])
-((1, 0, 1, 1, 0, 1), [1, 1, 1, 1, 0, 0])
-((1, 0, 1, 1, 1, 0), [1, 1, 1, 1, 0, 0])
-((1, 0, 1, 1, 1, 1), [1, 1, 1, 1, 1, 0])
-((1, 1, 0, 0, 0, 0), [1, 1, 0, 0, 0, 0])
-((1, 1, 0, 0, 0, 1), [1, 1, 1, 0, 0, 0])
-((1, 1, 0, 0, 1, 0), [1, 1, 1, 0, 0, 0])
-((1, 1, 0, 0, 1, 1), [1, 1, 1, 1, 0, 0])
-((1, 1, 0, 1, 0, 0), [1, 1, 1, 0, 0, 0])
-((1, 1, 0, 1, 0, 1), [1, 1, 1, 1, 0, 0])
-((1, 1, 0, 1, 1, 0), [1, 1, 1, 1, 0, 0])
-((1, 1, 0, 1, 1, 1), [1, 1, 1, 1, 1, 0])
-((1, 1, 1, 0, 0, 0), [1, 1, 1, 0, 0, 0])
-((1, 1, 1, 0, 0, 1), [1, 1, 1, 1, 0, 0])
-((1, 1, 1, 0, 1, 0), [1, 1, 1, 1, 0, 0])
-((1, 1, 1, 0, 1, 1), [1, 1, 1, 1, 1, 0])
-((1, 1, 1, 1, 0, 0), [1, 1, 1, 1, 0, 0])
-((1, 1, 1, 1, 0, 1), [1, 1, 1, 1, 1, 0])
-((1, 1, 1, 1, 1, 0), [1, 1, 1, 1, 1, 0])
-((1, 1, 1, 1, 1, 1), [1, 1, 1, 1, 1, 1])
