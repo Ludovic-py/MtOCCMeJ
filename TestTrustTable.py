@@ -47,10 +47,33 @@ def boolean_calculations(num_cables, connections):
     return truth_table
 
 
-# Exemple utilisation : 2 Cables, 1 Connection
-num_cables = 2
+# Exemple utilisation : 4 Cables, 12 Connection
+
+
+# Nombre de câbles dans le système
+num_cables = 4
+
+# --Liste des connexions entre les câbles--
+# Chaque connexion est définie par un tuple (câble1, câble2, fonction_supérieure, fonction_inférieure)
+# câble1 et câble2 représentent les indices des câbles connectés
+# fonction_supérieure applique une opération logique sur la sortie supérieure ici "OR" mais peut être modifiée
+# fonction_inférieure applique une opération logique sur la sortie inférieure ici "AND" /idem/
+
+# IMPORTANT dans ma representation, le cable 1 part du dessus donc les cables suivants sont en desous
+
 connections = [
-    (1, 2, "OR", "AND")  # connection de cable 1 au 2eme avec regle OR/AND
+    (1, 2, "OR", "AND"),  # Connexion entre le câble 1 et le câble 2
+    (1, 3, "OR", "AND"),  # Connexion entre le câble 1 et le câble 3
+    (1, 4, "OR", "AND"),  # Connexion entre le câble 1 et le câble 4
+    (2, 3, "OR", "AND"),  # Connexion entre le câble 2 et le câble 3
+    (2, 4, "OR", "AND"),  # Connexion entre le câble 2 et le câble 4
+    (3, 4, "OR", "AND"),  # Connexion entre le câble 3 et le câble 4
+    (1, 2, "OR", "AND"),  # Deuxième connexion entre le câble 1 et le câble 2
+    (2, 3, "OR", "AND"),  # Deuxième connexion entre le câble 2 et le câble 3
+    (3, 4, "OR", "AND"),  # Deuxième connexion entre le câble 3 et le câble 4
+    (1, 3, "OR", "AND"),  # Deuxième connexion entre le câble 1 et le câble 3
+    (1, 4, "OR", "AND"),  # Deuxième connexion entre le câble 1 et le câble 4
+    (2, 4, "OR", "AND"),  # Deuxième connexion entre le câble 2 et le câble 4
 ]
 
 truth_table = boolean_calculations(num_cables, connections)
