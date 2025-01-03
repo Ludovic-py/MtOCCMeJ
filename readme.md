@@ -207,13 +207,7 @@ Pour tester un système ayant `c` câbles avec un nombre variable de connexions 
 
 2. **Se concentrer sur le plus petit sous-ensemble fiable** :
     - Commencer les tests avec les ensembles ayant le plus petit nombre de connexions (par ex. `n = 1`).
-    - Ajouter progressivement des connexions et tester jusqu'à identifier un sous-ensemble fiable.
-
-3. **Tester toutes les combinaisons d'entrée** :
-    - Utiliser le tableau de vérité généré pour tester chaque sous-ensemble de connexions sur toutes les combinaisons possibles des entrées pour les `c` câbles.
-    - Si un sous-ensemble produit de manière fiable les sorties correspondant au tableau de vérité, alors ce sous-ensemble est fiable.
-
-
+    - Ajouter progressivement des connexions et tester jusqu'à identifier un ensemble fiable.
 
 
 
