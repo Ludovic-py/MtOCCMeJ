@@ -71,7 +71,7 @@ edit: sacré dinguerie maintenant
             upper_output = apply_logic(input1_val, input2_val, upper_func)
             lower_output = apply_logic(input1_val, input2_val, lower_func)
 
-            # assigne les outpu faits juste avant
+            # assigne les outputs faits juste avant
             cable_outputs[input1 - 1] = upper_output
             cable_outputs[input2 - 1] = lower_output
 
