@@ -5,7 +5,7 @@ Cable v4.1 est une application graphique de câblage avec la gestion logique des
 
 # Cable v4_1
 
-une tentative d'optimisation du programme precedent par moimême avec l'utilisation de liste pour l'optimisation (lines.append) plein ecran et compatibilité plus avancé sur MacOs (work in-progress) tout n'est pas encore implementé à(but de merge après verification et finition sur la version de raphaël)
+une tentative d'optimisation du programme precedent par moimême avec l'utilisation de liste pour l'optimisation (lines.append) plein ecran et compatibilité plus avancé sur MacOs (work in-progress) tout n'est pas encore implementé (quasiment rien en fait)
 
 # dynamic trust table et/ou 3T/TestTrustTable
 
