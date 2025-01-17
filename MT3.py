@@ -30,7 +30,7 @@ def test_all_combinations(num_cables:int):
     for connection_set_size in range(1, len(all_possible_connections) + 1):
         print(f"Testing combination sets of size {connection_set_size}...")
 
-        # test tout les sets de la taille actuelle
+        # test tout les sets de la taille actuelle (le problème est là, moi vivre vouloir non)
         for subset in combinations(all_possible_connections, connection_set_size):
             truth_table = boolean_calculations(num_cables, subset)
             if verify_reliability(truth_table):
