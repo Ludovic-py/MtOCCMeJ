@@ -96,18 +96,19 @@ num_cables = 4
 # IMPORTANT dans ma representation, le cable 1 part du dessus donc les cables suivants sont en desous
 
 connections = [
-    (1, 2, "OR", "AND"),  # Connexion entre le câble 1 et le câble 2
-    (1, 3, "OR", "AND"),  # Connexion entre le câble 1 et le câble 3
-    (1, 4, "OR", "AND"),  # Connexion entre le câble 1 et le câble 4
-    (2, 3, "OR", "AND"),  # Connexion entre le câble 2 et le câble 3
-    (2, 4, "OR", "AND"),  # Connexion entre le câble 2 et le câble 4
-    (3, 4, "OR", "AND"),  # Connexion entre le câble 3 et le câble 4
-    (1, 2, "OR", "AND"),  # Deuxième connexion entre le câble 1 et le câble 2
-    (2, 3, "OR", "AND"),  # Deuxième connexion entre le câble 2 et le câble 3
-    (3, 4, "OR", "AND"),  # Deuxième connexion entre le câble 3 et le câble 4
-    (1, 3, "OR", "AND"),  # Deuxième connexion entre le câble 1 et le câble 3
-    (1, 4, "OR", "AND"),  # Deuxième connexion entre le câble 1 et le câble 4
-    (2, 4, "OR", "AND"),  # Deuxième connexion entre le câble 2 et le câble 4
+    (0, 2, "OR", "AND"),  
+    (1, 3, "OR", "AND"),  
+    (0, 1, "OR", "AND"),  
+    (2, 3, "OR", "AND"),  
+    (1, 2, "OR", "AND"),  
+    #(3, 4, "OR", "AND"),  # Connexion entre le câble 3 et le câble 4
+    #(1, 2, "OR", "AND"),  # Deuxième connexion entre le câble 1 et le câble 2
+    #(2, 3, "OR", "AND"),  # Troixième connexion entre le câble 2 et le câble 3
+    #(3, 4, "OR", "AND"),  # Quatrième connexion entre le câble 3 et le câble 4
+    #(1, 3, "OR", "AND"),  # Cinquième connexion entre le câble 1 et le câble 3
+    #(1, 4, "OR", "AND"),  # sixième connexion entre le câble 1 et le câble 4
+    #(2, 4, "OR", "AND"),  # septième connexion entre le câble 2 et le câble 4
+    
 ]
 
 truth_table = boolean_calculations(num_cables, connections)
