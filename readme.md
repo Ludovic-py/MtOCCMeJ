@@ -14,6 +14,12 @@ programme ayant pour but de donner une table des input et output necessaire afin
 3T est maintenant essentiellement similaire a un (Cable v2)^2 en l'utilisant comme module on peut lui envoyer les nombre de cable et connections et il revera les output calculés et si le cablage est fiable (si non fiable renvera la premièrre combinaison qui n'as pas fontionnée)
 (sera prochainnement utilisé en tant que module pour un programme de test automatique (massTest 1/2 ou MT1/2))
 
+---
+## Remarques sur la performance informatique de MT3.1.2
+
+- La formule croît très rapidement à cause des calculs factorielles et des combinaisons.
+- Tester des sous-ensembles de grande taille (`c`) avec un nombre élevé de câbles (`n`) entraîne des temps de calcul très longs et une forte consommation de mémoire.
+
 
 ---
 
