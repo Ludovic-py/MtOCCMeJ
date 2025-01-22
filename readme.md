@@ -218,4 +218,28 @@ Pour tester un système ayant `c` câbles avec un nombre variable de connexions 
 
 
 
+### Combinaison de connexions fiables trouvée:
 
+---
+
+n=4
+
+(0, 1, 'OR', 'AND')
+(2, 3, 'OR', 'AND')
+(0, 2, 'OR', 'AND')
+(1, 3, 'OR', 'AND')
+(1, 2, 'OR', 'AND')
+
+---
+
+n=5
+
+(0, 1, 'OR', 'AND')
+(0, 2, 'OR', 'AND')
+(0, 3, 'OR', 'AND')
+(0, 4, 'OR', 'AND')
+(1, 2, 'OR', 'AND')
+(3, 4, 'OR', 'AND')
+(1, 3, 'OR', 'AND')
+(2, 4, 'OR', 'AND')
+(2, 3, 'OR', 'AND')
