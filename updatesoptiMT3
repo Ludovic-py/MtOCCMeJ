@@ -1,0 +1,22 @@
+pour 4 cables debut à 1
+
+158877 function calls in 0.068 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.001    0.001    0.068    0.068 MT3.1.2.py:25(test_all_combinations)
+      896    0.043    0.000    0.063    0.000 T3.py:23(boolean_calculations)
+   120512    0.018    0.000    0.018    0.000 T3.py:4(apply_logic)
+      896    0.001    0.000    0.003    0.000 T3.py:96(verify_reliability)
+     3940    0.001    0.000    0.002    0.000 T3.py:82(is_ordered_descending)
+    14336    0.001    0.000    0.001    0.000 {method 'copy' of 'list' objects}
+    14342    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
+     3940    0.001    0.000    0.001    0.000 {built-in method builtins.sorted}
+        6    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        1    0.000    0.000    0.000    0.000 MT3.1.2.py:8(generate_all_connections)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        6    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+
+
+je compte utiliser le module multiprocessing pour ammeliorer les performances du programme
