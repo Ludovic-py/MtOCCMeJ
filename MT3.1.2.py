@@ -19,7 +19,7 @@ def generate_all_connections(num_cables):
     return all_connections
 
 
-def test_all_combinations(num_cables,start_size=4):
+def test_all_combinations(num_cables,start_size):
     print(f"[launch] testing for {num_cables} cables, starting from {start_size} connections")
     """
         param:
@@ -51,7 +51,8 @@ def test_all_combinations(num_cables,start_size=4):
 # paramètres du programme
 if __name__ == "__main__":
     num_cables = 5
-    optimal_connections = test_all_combinations(num_cables)
+    start_size = 4
+    optimal_connections = test_all_combinations(num_cables,start_size)
 
     if optimal_connections:
         print("/!\ Combinaison de connexions fiables trouvée:")
