@@ -19,7 +19,8 @@ def generate_all_connections(num_cables):
     return all_connections
 
 
-def test_all_combinations(num_cables,start_size):
+def test_all_combinations(num_cables,start_size=4):
+    print(f"[launch] testing for {num_cables} cables, starting from {start_size} connections")
     """
         param:
             num_cables (int): nbr cables.
@@ -32,7 +33,7 @@ def test_all_combinations(num_cables,start_size):
 
     # Tester des sous-ensembles de taille incrementielle
     for connection_set_size in range(start_size, len(all_possible_connections) + 1):
-        print(f"Testing combination subsets of size {connection_set_size}...")
+        print(f"[update] Testing combination subsets of size {connection_set_size}, max set size before triggering force stop: {len(all_possible_connections) + 1}...")
 
         # Teste tous les sous-ensembles de la taille actuelle
         for subset in combinations(all_possible_connections, connection_set_size):
@@ -43,18 +44,17 @@ def test_all_combinations(num_cables,start_size):
                 if verify_reliability(truth_table):
                     # renvoie le premier set de combinaison trouvé
                     return permuted_subset
-
+                    ##print(f"connection set size:{connection_set_size} / max set size before triggering force stop: {len(all_possible_connections) + 1}")
     return None  # trouvé r
 
 
 # paramètres du programme
 if __name__ == "__main__":
-    num_cables = 7
-    start_size = 12
-    optimal_connections = test_all_combinations(num_cables,start_size)
+    num_cables = 5
+    optimal_connections = test_all_combinations(num_cables)
 
     if optimal_connections:
-        print("Combinaison de connexions fiables trouvée:")
+        print("/!\ Combinaison de connexions fiables trouvée:")
         for conn in optimal_connections:
             print(conn)
     else:

@@ -42,7 +42,7 @@ def boolean_calculations(num_cables, connections):
     # verifie chaque combinaison d'input
     for input_combination in inputs:
         cable_outputs = list(input_combination)  # Start with the initial input combination
-        print(f"\nInitial Inputs: {input_combination}")
+        ##print(f"\nInitial Inputs: {input_combination}")
 
         # verifie les connexions de cables étape/étape+1
         for step, conn in enumerate(connections):
@@ -106,7 +106,7 @@ def verify_reliability(truth_table):
 
     for inputs, outputs in truth_table:
         if not is_ordered_descending(outputs):
-            print(f"cablage non-fiable: Inputs: {inputs} -> Outputs: {outputs}")
+            ##print(f"cablage non-fiable: Inputs: {inputs} -> Outputs: {outputs}")
             return False
     return True
 
@@ -114,7 +114,7 @@ def verify_reliability(truth_table):
 # Param du programme
 if __name__ == "__main__":
     # Nbr cables
-    num_cables = 4
+    num_cables = 5
 
     # definir les connections: (cable1, cable2, upper_logic, lower_logic)
     # Les indices sont 0-based pour les connexions ex: le cable du haut est 0 et celui du dessous est 1
