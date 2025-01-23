@@ -51,7 +51,7 @@ def test_all_combinations(num_cables,start_size):
 if __name__ == "__main__":
     num_cables = 7
     start_size = 12
-    optimal_connections = test_all_combinations(num_cables)
+    optimal_connections = test_all_combinations(num_cables,start_size)
 
     if optimal_connections:
         print("Combinaison de connexions fiables trouvée:")
