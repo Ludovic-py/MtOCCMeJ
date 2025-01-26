@@ -94,7 +94,7 @@ Cela signifie que ce nombre croît **de manière factorielle** avec l'augmentati
 
 - Pour n = 6 :
     - C = 6 * (2 * 6 - 1) = 66
-    - Nombre total de calculs : **3 554 627 472 075**
+    - Nombre total de calculs : **3 554 627 472 075** (ce calcul est faux, selon la numworks il s'agit de 1 302 061 344)
 
 ---
 
@@ -110,7 +110,7 @@ Cela signifie que ce nombre croît **de manière factorielle** avec l'augmentati
    Le rapport est obtenu en divisant le total des calculs pour n = 6 par le total pour n = 5.
 
    Rapport = Total pour n = 6 / Total pour n = 5  
-   Rapport = 3 554 627 472 075 / 9 864 100 ≈ 360.360,04
+   Rapport = 3 554 627 472 075 / 9 864 100 ≈ 360.360,04 (correction 1 302 061 344 / 9 864 100 donc ≈ 132.00)
 
 ---
 
@@ -120,7 +120,7 @@ Cela signifie que ce nombre croît **de manière factorielle** avec l'augmentati
   Le nombre total de calculs est multiplié par environ **8,13**.
 
 - **De n = 5 à n = 6** :  
-  Le nombre total de calculs est multiplié par environ **360.360,04**.
+  Le nombre total de calculs est multiplié par environ **360.360,04** (correction ≈ 132.00).
 
 ---
 
